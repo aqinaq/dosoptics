@@ -3,7 +3,7 @@
     kk: {
       eyebrow:'DOS ҚЫЗМЕТТЕРІ', serviceTitle:'Бәрі осы жерде.', intro:'Салонға келмей тұрып жиі қойылатын сұрақтарға жауап алыңыз.',
       facts:[['7 қала','Қазақстан бойынша салондар'],['10:00–21:00','Салондар күн сайын ашық'],['≈15 минут','Жазылу бойынша тегін тексеру'],['1 күн','Көзілдірікті дайындаудың әдеттегі мерзімі']],
-      pillars:[['Сапа','Оптикалық өнімдерде сапалы материалдар мен технологияларға мән беріледі.'],['Дизайн','Көзілдірік жеке стильді толықтыратын заманауи бөлшек ретінде таңдалады.'],['Ыңғайлылық','Күнделікті тағуға жеңіл әрі қолайлы үлгілерге көңіл бөлінеді.']], lensTitle:'Жанаспалы линзалар да бар.', lensText:'Күнделікті, екі апталық және айлық линзалар стандартты қисықтықпен ұсынылады. Астигматикалық, үш айлық және ұзақ тағылатын арнайы түрлері тапсырыспен алынады.', shop:'Линзаларды қарау ↗', note:'Нақты қолжетімділік, жөндеу құны және акция шарттары салонда нақтыланады.',
+      pillars:[['Сапа','Оптикалық өнімдерде сапалы материалдар мен технологияларға мән беріледі.'],['Дизайн','Көзілдірік жеке стильді толықтыратын заманауи бөлшек ретінде таңдалады.'],['Ыңғайлылық','Күнделікті тағуға жеңіл әрі қолайлы үлгілерге көңіл бөлінеді.']], note:'Нақты қолжетімділік, жөндеу құны және акция шарттары салонда нақтыланады.',
       faqTitle:'Сұрақтарыңызға жауап.', faqIntro:'Қызметтер мен сатып алу шарттарын бір жерден қараңыз.',
       groups:[
         {title:'Салондар мен келу',items:[['Қай қалаларда бар?','Алматы, Астана, Атырау, Ақтөбе, Шымкент, Өскемен және Ақтауда.'],['Салондардың жұмыс уақыты қандай?','Күн сайын 10:00–21:00, демалыссыз.'],['Көз дәрігері қашан қабылдайды?','Алдын ала жазылу бойынша 11:00–20:00.'],['Жеткізу бар ма?','Жеткізу қызметі жоқ. Қажет болса, сатып алушы салонға өз курьерін жібере алады.']]},
@@ -15,7 +15,7 @@
     ru: {
       eyebrow:'УСЛУГИ DOS',serviceTitle:'Всё в одном месте.',intro:'Ответы на частые вопросы перед визитом в салон.',
       facts:[['7 городов','Салоны по Казахстану'],['10:00–21:00','Ежедневно, без выходных'],['≈15 минут','Бесплатная проверка по записи'],['1 день','Обычный срок изготовления очков']],
-      pillars:[['Качество','В оптических изделиях делают ставку на качественные материалы и технологии.'],['Дизайн','Современные очки помогают подчеркнуть индивидуальный стиль.'],['Удобство','Особое внимание уделяется лёгкости и комфорту на каждый день.']],lensTitle:'Есть и контактные линзы.',lensText:'Однодневные, двухнедельные и месячные линзы со стандартной кривизной. Астигматические, трёхмесячные и специальные линзы длительного ношения доступны под заказ.',shop:'Посмотреть линзы ↗',note:'Наличие, стоимость ремонта и условия акций уточняются в салоне.',
+      pillars:[['Качество','В оптических изделиях делают ставку на качественные материалы и технологии.'],['Дизайн','Современные очки помогают подчеркнуть индивидуальный стиль.'],['Удобство','Особое внимание уделяется лёгкости и комфорту на каждый день.']],note:'Наличие, стоимость ремонта и условия акций уточняются в салоне.',
       faqTitle:'Ответы на ваши вопросы.',faqIntro:'Информация об услугах и условиях покупки в одном месте.',
       groups:[
         {title:'Салоны и посещение',items:[['В каких городах вы работаете?','Алматы, Астана, Атырау, Актобе, Шымкент, Усть-Каменогорск и Актау.'],['Когда открыты салоны?','Ежедневно с 10:00 до 21:00, без выходных.'],['Когда принимает врач?','С 11:00 до 20:00 по предварительной записи.'],['Есть ли доставка?','Доставки нет. Покупатель может самостоятельно отправить курьера в салон.']]},
@@ -27,7 +27,7 @@
     en: {
       eyebrow:'DOS SERVICES',serviceTitle:'Everything in one place.',intro:'Answers to common questions before visiting a store.',
       facts:[['7 cities','Stores across Kazakhstan'],['10:00–21:00','Open daily'],['≈15 min','Free exam by appointment'],['1 day','Typical glasses turnaround']],
-      pillars:[['Quality','Optical products are made with an emphasis on quality materials and technology.'],['Design','Modern eyewear is chosen to complement personal style.'],['Comfort','Light, practical options are intended for everyday wear.']],lensTitle:'Contact lenses, too.',lensText:'Daily, two-week and monthly lenses with standard base curves are offered. Toric, three-month and specialty extended-wear lenses are available by order.',shop:'Browse lenses ↗',note:'Confirm stock, repair costs and offer terms at a store.',
+      pillars:[['Quality','Optical products are made with an emphasis on quality materials and technology.'],['Design','Modern eyewear is chosen to complement personal style.'],['Comfort','Light, practical options are intended for everyday wear.']],note:'Confirm stock, repair costs and offer terms at a store.',
       faqTitle:'Your questions, answered.',faqIntro:'Services and purchase terms in one place.',
       groups:[
         {title:'Stores and visits',items:[['Where are the stores?','Almaty, Astana, Atyrau, Aktobe, Shymkent, Oskemen and Aktau.'],['What are the opening hours?','Every day from 10:00 to 21:00.'],['When is the eye specialist available?','From 11:00 to 20:00 by appointment.'],['Is delivery available?','Delivery is not offered. Customers may arrange their own courier to collect from a store.']]},
@@ -48,7 +48,6 @@
     section.innerHTML=`<div class="section-heading"><div><div class="eyebrow">${c.eyebrow}</div><h2>${c.serviceTitle}</h2></div><p>${c.intro}</p></div>
       <div class="fact-grid">${c.facts.map(([value,label])=>`<div><strong>${value}</strong><p>${label}</p></div>`).join('')}</div>
       <div class="dos-pillars">${c.pillars.map(([title,description],index)=>`<article><span>0${index+1}</span><h3>${title}</h3><p>${description}</p></article>`).join('')}</div>
-      <div class="contact-lens-info"><div><h3>${c.lensTitle}</h3><p>${c.lensText}</p></div><a class="button navy" href="shop.html">${c.shop}</a></div>
       <div class="dos-faq"><div class="dos-faq-heading"><div class="eyebrow">FAQ / DOS</div><h2>${c.faqTitle}</h2><p>${c.faqIntro}</p></div><div class="dos-faq-groups">${c.groups.map((group,index)=>`<div class="dos-faq-group"><h3><span>0${index+1}</span>${group.title}</h3>${group.items.map(([question,answer])=>`<details><summary>${question}</summary><p>${answer}</p></details>`).join('')}</div>`).join('')}</div></div>
       <div class="dos-facts-bottom"><p>${c.note}</p><div><button class="button navy" type="button" data-facts-book>${c.book}</button><a class="button header-book" href="#salons">${c.salons}</a></div></div>`;
     section.querySelector('[data-facts-book]').addEventListener('click',()=>openBooking());
