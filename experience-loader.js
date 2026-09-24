@@ -21,7 +21,19 @@
         message.textContent = '3D көзілдірікті жүктеу мүмкін болмады. Бетті қайта жүктеп көріңіз.';
         stage.append(message);
       }
+      document.querySelectorAll('.product-3d-status').forEach(status => {
+        status.textContent = '3D көрініс қолжетімсіз';
+      });
       console.error('3D eyewear failed to load', error);
+      return;
+    }
+    try {
+      await load('catalog-3d.js?v=20260924-catalog3d');
+    } catch (error) {
+      document.querySelectorAll('.product-3d-status').forEach(status => {
+        status.textContent = '3D көрініс қолжетімсіз';
+      });
+      console.error('3D collection failed to load', error);
     }
   };
   addEventListener('DOMContentLoaded', () => {
