@@ -1,4 +1,4 @@
-// Let the page paint and its navigation become interactive before starting WebGL.
+// Start the heavier WebGL preview only when the visitor asks for it.
 (() => {
   const load = src => new Promise((resolve, reject) => {
     const script = document.createElement('script');
@@ -11,14 +11,22 @@
     try {
       await load('assets/three.min.js?v=20260912-clean');
       await load('eyewear-model.js?v=20260912-clean');
-      await load('experience.js?v=20260924-language-menu');
+      await load('experience.js?v=20260924-fixes2');
     } catch (error) {
       // The local eyewear illustration remains available when 3D cannot load.
       console.warn('3D preview unavailable', error);
     }
   };
-  addEventListener('load', () => {
-    if ('requestIdleCallback' in window) requestIdleCallback(start, {timeout: 1500});
-    else setTimeout(start, 200);
+  addEventListener('DOMContentLoaded', () => {
+    const preview = document.querySelector('.scene-start');
+    if (!preview) return;
+    if (matchMedia('(max-width: 760px), (prefers-reduced-motion: reduce)').matches) {
+      preview.hidden = true;
+      return;
+    }
+    preview.addEventListener('click', () => {
+      preview.disabled = true;
+      start();
+    }, {once: true});
   }, {once: true});
 })();

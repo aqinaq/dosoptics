@@ -11,7 +11,6 @@
   const words = () => copy[document.documentElement.lang] || copy.kk;
   stage.classList.add('scene-ready');
   stage.innerHTML = `<div class="scene-watermark" aria-hidden="true">DOS</div><div class="scene-orbit" aria-hidden="true"></div><div class="scene-label"><span>THE DOS PERSPECTIVE</span><span data-scene="concept"></span></div><canvas class="scene-canvas" tabindex="0" role="img"></canvas><div class="scene-bottom"><div class="scene-tools"><span class="scene-hint"><svg class="ui-icon drag-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h18M7 8l-4 4 4 4m10-8 4 4-4 4"/></svg><span data-scene="drag"></span></span><button class="spin-button" aria-pressed="false"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.4 6.7M20 4v7h-7"/></svg><span data-spin-label></span></button></div><div class="scene-config"><div><div class="frame-name">DOS / LINE 02</div><div class="frame-kind" data-scene="kind"></div></div><div class="swatches" role="group"><button data-color="0" aria-pressed="true"></button><button data-color="1" aria-pressed="false"></button><button data-color="2" aria-pressed="false"></button></div></div><div class="shape-switch" role="group"><button data-shape="0" aria-pressed="false">LINE / 01</button><button data-shape="1" aria-pressed="true">LINE / 02</button><button data-shape="2" aria-pressed="false">SUN / 03</button></div></div><span class="scene-status" aria-live="polite"></span>`;
-  document.querySelectorAll('a.wordmark').forEach(el => { el.classList.add('brand-image');el.innerHTML='<img src="assets/dos-logo.png" alt="DOS Optics" width="94" height="44">'; });
   let spin=false,shape=1,color=0,explosion=1,currentExplosion=reduced.matches?1:0;
   stage.id='eyewear-studio';
   const partNames={kk:{lenses:'Линзалар',frame:'Жақтау',hinges:'Топсалар',temples:'Құлақшалар',bridge:'Көпір'},ru:{lenses:'Линзы',frame:'Оправа',hinges:'Шарниры',temples:'Дужки',bridge:'Мост'},en:{lenses:'Lenses',frame:'Frame',hinges:'Hinges',temples:'Temples',bridge:'Bridge'}};
@@ -29,12 +28,6 @@
   };
   refreshCopy();
   new MutationObserver(refreshCopy).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
-  // Animate language changes using the same existing language actions.
-  document.querySelectorAll('.language-option').forEach(button=>button.addEventListener('click',event=>{
-    if(!document.startViewTransition||reduced.matches||button.dataset.transitioning)return;
-    event.stopImmediatePropagation();button.dataset.transitioning='1';
-    document.startViewTransition(()=>{button.click();delete button.dataset.transitioning;});
-  },true));
   const progress=document.createElement('div');progress.className='progress-line';document.body.append(progress);
   let scrollPending=false;
   addEventListener('scroll',()=>{if(scrollPending)return;scrollPending=true;requestAnimationFrame(()=>{const max=document.documentElement.scrollHeight-innerHeight;progress.style.transform=`scaleX(${max>0?scrollY/max:0})`;scrollPending=false;});},{passive:true});
@@ -44,7 +37,7 @@
   if(!window.THREE){fallback();return;}
   const T=window.THREE;
   let renderer;
-  try{renderer=new T.WebGLRenderer({canvas,alpha:true,antialias:true,preserveDrawingBuffer:true,powerPreference:'low-power'});}catch{fallback();return;}
+  try{renderer=new T.WebGLRenderer({canvas,alpha:true,antialias:true,powerPreference:'low-power'});}catch{fallback();return;}
   renderer.setPixelRatio(Math.min(devicePixelRatio,1.6));renderer.outputColorSpace=T.SRGBColorSpace;renderer.toneMapping=T.ACESFilmicToneMapping;renderer.toneMappingExposure=1.05;
   const scene=new T.Scene();const camera=new T.PerspectiveCamera(37,1,.1,80);camera.position.set(0,.45,8.9);camera.lookAt(0,0,-.4);
   scene.add(new T.HemisphereLight(0xe8edf0,0x282c30,1.3));
@@ -95,25 +88,8 @@
   reduced.addEventListener('change',()=>{if(reduced.matches){spin=false;stage.querySelector('.spin-button').setAttribute('aria-pressed','false');refreshCopy();}});
   canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();cancelAnimationFrame(animationId);fallback();},{once:true});
   fit();tick(0);
-  // Catalogue previews are rendered from these same concept models, not stock inventory.
-  const thumbnails=[];
-  const makeThumbnail=i=>{
-    if(document.hidden||pageLeaving)return;
-    const oldAspect=camera.aspect,oldZ=camera.position.z;
-    renderer.setSize(480,320,false);camera.aspect=1.5;camera.position.z=7.5;camera.updateProjectionMatrix();
-    buildGlasses(i);model.rotation.set(.25,-.38,-.07);model.position.y=0;glasses.explode(0);studioPlane.visible=false;
-    renderer.render(scene,camera);thumbnails[i]=canvas.toDataURL('image/png');
-    studioPlane.visible=true;buildGlasses(shape);camera.aspect=oldAspect;camera.position.z=oldZ;fit();patchCards();
-    if(i<2)scheduleThumbnail(i+1);
-  };
-  const scheduleThumbnail=i=>{
-    if('requestIdleCallback' in window)requestIdleCallback(()=>makeThumbnail(i),{timeout:2500});
-    else setTimeout(()=>makeThumbnail(i),50);
-  };
-  const patchCards=()=>{document.querySelectorAll('.product').forEach(b=>{const index=['atelier','linea','sol'].indexOf(b.dataset.product);if(index<0)return;const img=b.querySelector('img');if(thumbnails[index]&&img.src!==thumbnails[index])img.src=thumbnails[index];img.alt=words().names[index];b.querySelector('h3').textContent=words().names[index];b.querySelector('p').textContent=words().types[index];if(!b.dataset.motionBound){b.dataset.motionBound='1';b.addEventListener('pointermove',e=>{if(reduced.matches||e.pointerType!=='mouse')return;const r=b.getBoundingClientRect();b.style.setProperty('--rx',`${-(e.clientY-r.top-r.height/2)/r.height*7}deg`);b.style.setProperty('--ry',`${(e.clientX-r.left-r.width/2)/r.width*7}deg`);});b.addEventListener('pointerleave',()=>{b.style.setProperty('--rx','0deg');b.style.setProperty('--ry','0deg');});b.addEventListener('click',()=>{const detail=document.querySelector('#detailContent');const image=detail.querySelector('img');if(image&&thumbnails[index])image.src=thumbnails[index];const heading=detail.querySelector('h2');if(heading)heading.textContent=words().names[index];const p=detail.querySelector('p');if(p)p.textContent=words().types[index];});}});};
-  patchCards();new MutationObserver(()=>patchCards()).observe(document.querySelector('#cards'),{childList:true});
-  const collection=document.querySelector('#collection');
-  if(collection)new IntersectionObserver(([e],observer)=>{if(e.isIntersecting){observer.disconnect();scheduleThumbnail(0);}},{rootMargin:'300px'}).observe(collection);
+  // Keep catalogue illustrations static. Capturing the WebGL canvas for each
+  // card forced synchronous GPU reads and caused long pauses while navigating.
   addEventListener('pagehide',()=>{pageLeaving=true;active=false;cancelAnimationFrame(animationId);});
   addEventListener('pageshow',e=>{if(e.persisted){pageLeaving=false;updateLoop();}});
 })();
