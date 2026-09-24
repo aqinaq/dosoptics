@@ -63,3 +63,9 @@ document.addEventListener('DOMContentLoaded',()=>{const form=document.querySelec
 Object.assign(translations.kk,{navGuide:'Линза нұсқаулығы'});
 Object.assign(translations.ru,{navGuide:'Как носить линзы'});
 Object.assign(translations.en,{navGuide:'Lens guide'});
+Object.assign(translations.kk,{footerContacts:'Байланыс'});
+Object.assign(translations.ru,{footerContacts:'Контакты'});
+Object.assign(translations.en,{footerContacts:'Contact'});
+Object.assign(translations.kk,{footerPhone:'Телефон'});
+Object.assign(translations.ru,{footerPhone:'Телефон'});
+Object.assign(translations.en,{footerPhone:'Phone'});
