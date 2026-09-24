@@ -13,7 +13,7 @@
       await load('eyewear-model.js?v=20260912-clean');
       await load('experience.js?v=20260924-language-menu');
     } catch (error) {
-      // The original hero image remains available when 3D cannot load.
+      // The local eyewear illustration remains available when 3D cannot load.
       console.warn('3D preview unavailable', error);
     }
   };
