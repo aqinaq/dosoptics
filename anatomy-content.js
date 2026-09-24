@@ -43,13 +43,17 @@
   section.className='section dos-facts';
   section.id='dos-services';
   host.before(section);
+  const faqSection=document.createElement('section');
+  faqSection.className='section dos-faq-section';
+  faqSection.id='dos-questions';
+  host.after(faqSection);
   function render(){
     const c=copy[document.documentElement.lang]||copy.kk;
     section.innerHTML=`<div class="section-heading"><div><div class="eyebrow">${c.eyebrow}</div><h2>${c.serviceTitle}</h2></div><p>${c.intro}</p></div>
       <div class="fact-grid">${c.facts.map(([value,label])=>`<div><strong>${value}</strong><p>${label}</p></div>`).join('')}</div>
       <div class="dos-pillars">${c.pillars.map(([title,description],index)=>`<article><span>0${index+1}</span><h3>${title}</h3><p>${description}</p></article>`).join('')}</div>
-      <div class="dos-faq"><div class="dos-faq-heading"><div class="eyebrow">FAQ / DOS</div><h2>${c.faqTitle}</h2><p>${c.faqIntro}</p></div><div class="dos-faq-groups">${c.groups.map((group,index)=>`<div class="dos-faq-group"><h3><span>0${index+1}</span>${group.title}</h3>${group.items.map(([question,answer])=>`<details><summary>${question}</summary><p>${answer}</p></details>`).join('')}</div>`).join('')}</div></div>
       <div class="dos-facts-bottom"><p>${c.note}</p><div><button class="button navy" type="button" data-facts-book>${c.book}</button><a class="button header-book" href="#salons">${c.salons}</a></div></div>`;
+    faqSection.innerHTML=`<div class="dos-faq"><div class="dos-faq-heading"><div class="eyebrow">FAQ / DOS</div><h2>${c.faqTitle}</h2><p>${c.faqIntro}</p></div><div class="dos-faq-groups">${c.groups.map((group,index)=>`<div class="dos-faq-group"><h3><span>0${index+1}</span>${group.title}</h3>${group.items.map(([question,answer])=>`<details><summary>${question}</summary><p>${answer}</p></details>`).join('')}</div>`).join('')}</div></div>`;
     section.querySelector('[data-facts-book]').addEventListener('click',()=>openBooking());
   }
   new MutationObserver(render).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
