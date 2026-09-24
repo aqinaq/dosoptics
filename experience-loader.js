@@ -1,4 +1,4 @@
-// Start the heavier WebGL preview only when the visitor asks for it.
+// Show the 3D eyewear in the hero as soon as the page is ready.
 (() => {
   const load = src => new Promise((resolve, reject) => {
     const script = document.createElement('script');
@@ -11,22 +11,20 @@
     try {
       await load('assets/three.min.js?v=20260912-clean');
       await load('eyewear-model.js?v=20260912-clean');
-      await load('experience.js?v=20260924-fixes2');
+      await load('experience.js?v=20260924-model-only');
     } catch (error) {
-      // The local eyewear illustration remains available when 3D cannot load.
-      console.warn('3D preview unavailable', error);
+      const stage = document.querySelector('.hero-photo');
+      if (stage) {
+        stage.innerHTML = '';
+        const message = document.createElement('p');
+        message.className = 'scene-fallback-message';
+        message.textContent = '3D көзілдірікті жүктеу мүмкін болмады. Бетті қайта жүктеп көріңіз.';
+        stage.append(message);
+      }
+      console.error('3D eyewear failed to load', error);
     }
   };
   addEventListener('DOMContentLoaded', () => {
-    const preview = document.querySelector('.scene-start');
-    if (!preview) return;
-    if (matchMedia('(max-width: 760px), (prefers-reduced-motion: reduce)').matches) {
-      preview.hidden = true;
-      return;
-    }
-    preview.addEventListener('click', () => {
-      preview.disabled = true;
-      start();
-    }, {once: true});
+    start();
   }, {once: true});
 })();

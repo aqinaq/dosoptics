@@ -8,3 +8,4 @@
 .hero{background:#071b34}.hero-copy{background:#173d62}.hero-photo{background:radial-gradient(ellipse at 55% 43%,#355d82 0%,#123652 40%,#071b34 76%)}
 
 .scene-start{position:absolute;right:28px;bottom:26px;z-index:3;width:58px;height:58px;border:1px solid #d9f378;border-radius:50%;background:#071b34;color:#d9f378;font-size:15px;font-weight:800;box-shadow:0 8px 22px #071b3480}.scene-start:hover{background:#173d62}.scene-start[hidden]{display:none}
+.scene-loading{position:absolute;left:35px;top:30px;margin:0;color:#d9f378;font-size:13px;letter-spacing:.08em}
