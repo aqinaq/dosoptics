@@ -2,3 +2,27 @@ header{gap:22px}header nav{gap:clamp(12px,1.8vw,30px);white-space:nowrap}header 
 @media(max-width:1200px){header{flex-wrap:wrap;height:auto;min-height:102px;padding-top:18px;padding-bottom:18px}header nav{order:3;width:100%;justify-content:space-between;border-top:1px solid var(--line);padding-top:13px}.header-actions{margin-left:auto}}
 @media(max-width:760px){header{gap:14px}header nav{overflow-x:auto;justify-content:flex-start;gap:22px;scrollbar-width:thin}header nav a{font-size:12px}.header-actions{gap:10px;flex-wrap:wrap;justify-content:flex-end}.header-account,.header-cart{font-size:11px}.header-cart{padding:6px 8px}.shop-grid{grid-template-columns:1fr;gap:12px}.shop-grid article{min-height:0}.about,.contact{grid-template-columns:1fr;gap:30px}.about-points p{font-size:18px}.contact-actions a{grid-template-columns:85px 1fr 16px;gap:10px}.contact-actions strong{font-size:14px}}
 @media(max-width:440px){.header-account{order:4}.header-cart{order:5}.header-book{order:3}.contact-actions a{grid-template-columns:75px 1fr 15px}.contact-actions strong{overflow-wrap:anywhere}}
+
+/* A small, consistent icon language keeps actions easy to scan. */
+.ui-icon{display:inline-block;width:19px;height:19px;flex:none;vertical-align:-.22em}
+.arrow-icon{width:17px;height:17px;margin-left:5px;vertical-align:-.18em}
+.button .arrow-icon,.text-button .arrow-icon{margin-left:auto}
+.round-arrow .arrow-icon{width:18px;height:18px;margin:0}
+.product-image:after{display:none}
+.product:hover .round-arrow,.product:focus-visible .round-arrow{background:var(--navy);border-color:var(--navy);color:white}
+.header-account,.header-cart{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px}
+.header-account{padding:7px 0}
+.header-cart{padding:9px 12px}
+.header-account:hover,.header-cart:hover{color:#496b32}
+.header-account .ui-icon,.header-cart .ui-icon{width:20px;height:20px}
+.languages button{min-width:36px;min-height:40px}
+.contact-actions .arrow-icon{margin:0;justify-self:end}
+@media(max-width:760px){.header-account,.header-cart{min-height:42px}.header-account .ui-icon,.header-cart .ui-icon{width:18px;height:18px}}
+
+/* Standalone section pages share the original section layouts. */
+.inner-page{min-height:calc(100vh - 360px)}
+.inner-page .section{padding-top:clamp(70px,8vw,120px);padding-bottom:clamp(90px,10vw,150px)}
+.inner-page .section h1{font-size:clamp(36px,4.2vw,64px);font-weight:500;letter-spacing:-.05em;line-height:1.15;margin:17px 0 0}
+.inner-page .about h1,.inner-page .contact h1{margin-bottom:0}
+header nav a[aria-current="page"]{text-decoration:underline;text-decoration-color:#8caf3d;text-underline-offset:9px;text-decoration-thickness:2px}
+@media(max-width:760px){.inner-page .section{padding-top:60px;padding-bottom:85px}}
